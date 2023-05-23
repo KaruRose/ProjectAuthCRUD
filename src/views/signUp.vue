@@ -2,7 +2,7 @@
   <div>
     <div class="navbar bg-base-100, bg-purple-600">
       <div class="flex-1">
-        <a class="btn btn-ghost normal-case text-xl">singUp</a>
+        <a class="btn btn-ghost normal-case text-xl">signUp</a>
       </div>
       <div class="flex-none">
         <button class="btn btn-square btn-ghost">
@@ -26,7 +26,7 @@
     </div>
     <router-link class="btn btn-circle" to="/home">home</router-link>
     <br>
-    <router-link class="btn btn-circle" to="/singUp">SingUp</router-link>
+    <router-link class="btn btn-circle" to="/">Login</router-link>
 
     <router-view></router-view>
   </div>

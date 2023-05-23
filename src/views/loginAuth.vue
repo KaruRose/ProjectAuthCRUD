@@ -23,18 +23,17 @@
     <input class="input input-bordered" type="password" v-model="password" placeholder="Password"
       required>
     <button class="btn btn-primary" @click="handleSignIn">Sign In</button><br>
-    <div>
-      <button class="btn btn-sm" @click="logout">Cerrar sesion</button>
-    </div><br>
+    <br>
     <router-link class="btn btn-circle" to="/home">home</router-link>
     <br>
-    <router-link class="btn btn-circle" to="/signUp">SingUp</router-link>
+    <router-link class="btn btn-circle" to="/signUp">SignUp</router-link>
     <router-view></router-view>
   </div>
 </template>
     
 <script>
 import { supabase } from '../config/supabse.js'
+import { useAuthStore } from '../stores/auth';
 
 export default {
   data() {
@@ -43,8 +42,12 @@ export default {
       password: '12341234',
     };
   },
+  mounted(){
+    // const authStore = useAuthStore()
+  },
   methods: {
     async handleSignIn() {
+      // const authStore = useAuthStore()
       try {
         const {
           data,
@@ -59,6 +62,10 @@ export default {
           // Manejar el error de inicio de sesión
         } else {
           console.log(data.user);
+          useAuthStore().updateUser(data.user)
+          this.$router.push({path: "home"})
+          
+
           // Usuario ha iniciado sesión exitosamente
         }
       } catch (error) {
